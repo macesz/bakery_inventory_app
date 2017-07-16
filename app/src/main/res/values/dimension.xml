@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+
+    <dimen name="activity_margin">16dp</dimen>
+
+    <dimen name="product_image_width">100dp</dimen>
+    <dimen name="product_image_height">100dp</dimen>
+
+    <dimen name="text_margin_left">4dp</dimen>
+    <dimen name="text_padding_bottom">4dp</dimen>
+
+    <dimen name="list_container_margin_left">16dp</dimen>
+    <dimen name="list_container_margin_right">16dp</dimen>
+
+    <dimen name="edit_product_input_padding">4dp</dimen>
+
+    <dimen name="product_list_item_name_text_size">20sp</dimen>
+    <dimen name="product_list_item_price_text_dize">20sp</dimen>
+    <dimen name="product_list_item_quantity_available_text_size">16sp</dimen>
+    <dimen name="product_list_item_textview_drawable_padding">4dp</dimen>
+
+    <dimen name="product_list_item_image_width">80dp</dimen>
+    <dimen name="product_list_item_image_height">80dp</dimen>
+
+</resources>

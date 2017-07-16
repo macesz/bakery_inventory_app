@@ -1,0 +1,117 @@
+<resources>
+    <string name="app_name">Bakery</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="pick_image_intent_text">Select image</string>
+    <string name="pick_image_intent_returned_null">No image chosen</string>
+    <string name="failed_to_save_product_image">Failed to save product image</string>
+    <string name="failed_to_save_temporary_product_image">Failed to save temporary product image</string>
+
+    <!-- Label for editor menu option to save pet and leave editor [CHAR LIMIT=20] -->
+    <string name="action_save">Save</string>
+
+    <!-- Label for editor overflow menu option that deletes the current pet [CHAR LIMIT=20] -->
+    <string name="action_delete">Delete</string>
+
+    <!-- Label for overview category of attributes in the editor [CHAR LIMIT=30] -->
+    <string name="category_overview">Overview</string>
+
+    <string name="hint_product_name">Product Name</string>
+    <string name="hint_product_price">Price</string>
+
+    <string name="category_supplier">Supplier Name</string>
+    <string name="hint_supplier_name">Supplier Name</string>
+    <string name="category_resupply">Phone</string>
+    <string name="hint_resupply_phone">Phone</string>
+    <string name="hint_resupply_url">URL</string>
+
+    <string name="category_quantity">Quantity</string>
+    <string name="hint_quantity_in_stock">No. of items in stock</string>
+
+    <!-- Label for overflow menu option that deletes all pet data in the app [CHAR LIMIT=20] -->
+    <string name="action_delete_all_entries">Delete All Products</string>
+
+    <!-- Title for the activity to add a new product [CHAR LIMIT=20] -->
+    <string name="editor_activity_title_new_product">Add Product</string>
+
+    <!-- Title for the activity to edit existing product [CHAR LIMIT=20] -->
+    <string name="editor_activity_title_edit_product">Edit Product</string>
+
+    <!-- Dialog message to ask the user to confirm deleting the current product [CHAR LIMIT=NONE] -->
+    <string name="delete_dialog_msg">Delete this product?</string>
+
+    <!-- Dialog button text for the option to confirm deleting the current product [CHAR LIMIT=20] -->
+    <string name="delete">Delete</string>
+
+    <!-- Dialog button text for the option to cancel deletion of the current product [CHAR LIMIT=20] -->
+    <string name="cancel">Cancel</string>
+
+    <string name="editor_insert_product_succeeded">Product added</string>
+    <string name="editor_insert_product_failed">Failed to add product</string>
+
+    <string name="update_product_updated">Product Saved</string>
+    <string name="update_product_update_failed">Failed to save product</string>
+
+    <string name="delete_all_products">All products deleted</string>
+
+    <!-- Toast message in editor when current product was successfully deleted [CHAR LIMIT=NONE] -->
+    <string name="editor_delete_product_successful">Product deleted</string>
+
+    <!-- Toast message in editor when current product has failed to be deleted [CHAR LIMIT=NONE] -->
+    <string name="editor_delete_product_failed">Error with deleting product</string>
+
+    <!-- Dialog message when user is leaving editor but hasn't saved changes [CHAR LIMIT=NONE] -->
+    <string name="unsaved_changes_dialog_msg">Discard your changes and quit editing?</string>
+
+    <!-- Dialog button text for the option to discard a user's changes [CHAR LIMIT=20] -->
+    <string name="discard">Discard</string>
+
+    <!-- Dialog button text for the option to keep editing the current product [CHAR LIMIT=20] -->
+    <string name="keep_editing">Keep Editing</string>
+
+    <string name="empty_view_title_text">No baked goods in the bakery yet</string>
+    <string name="empty_view_subtitle_text">Get started by adding a product</string>
+
+    <string name="in_stock">In stock</string>
+    <string name="out_of_stock">Out of stock</string>
+
+    <string name="product_sold_successfully">Product Sold</string>
+
+    <string name="error_reading_temporary_image_file_on_instance_restoration">
+        Error #1001: product temporary image load failed
+    </string>
+
+    <string name="product_sale_controls_sell_button">Sell</string>
+
+    <string name="increase_quantity_button_content_description">Increase quantity in stock</string>
+    <string name="decrease_quantity_button_content_description">Decrease quantity in stock</string>
+    <string name="call_resupply_phone_button_content_description">Call supplier</string>
+    <string name="open_resupply_url_button_content_description">Open supplier webpage</string>
+
+    <string name="edit_product_image_content_description">Click to change product image</string>
+    <string name="product_list_image_content_description">Product Image</string>
+
+    <string name="error_message_no_activity_to_place_call">Could not find an activity to place the call</string>
+    <string name="error_message_no_permission_to_place_call">No permission to place call</string>
+    <string name="error_message_no_activity_to_open_url">Could not find an activity to open URL</string>
+
+    <string name="message_please_set_phonenumber_first">Please set phone number first</string>
+    <string name="message_please_set_url_first">Please set URL first</string>
+    <string name="error_message_malformed_url">Malformed URL</string>
+    <string name="editor_required_name">Name is required</string>
+    <string name="editor_required_price">Price is required</string>
+    <string name="editor_required_photo">Photo is required</string>
+
+    <string name="product_validator_message_invalid_id">ID must be a non-negative integer</string>
+    <string name="product_validator_message_invalid_name">Product must have a name</string>
+    <string name="product_validator_message_invalid_price">Product must have a non-zero price</string>
+    <string name="product_validator_message_invalid_quantity">Product must have a non-negative quantity</string>
+    <string name="product_validator_message_invalid_supplier_name">Product must have a supplier name</string>
+    <string name="product_validator_message_invalid_url">Product URL is invalid</string>
+    <string name="product_has_missing_or_invalid_arguments">Product has missing or invalid arguments</string>
+    <string name="product_validator_message_missing_product_image">Add image by clicking icon in the upper left corner.</string>
+    <!-- Label for overflow menu option that inserts fake pet data into the app [CHAR LIMIT=20] -->
+    <string name="action_insert_dummy_data">Insert Dummy Data</string>
+    <string name="editor_ordering_product">Ordering product: </string>
+    <string name="editor_message_body">Hello, can you send me product: </string>
+</resources>

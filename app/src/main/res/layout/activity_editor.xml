@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?><!-- Layout for the editor -->
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<android.support.design.widget.AppBarLayout
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:theme="@style/AppTheme.AppBarOverlay">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_editor"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+</android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical"
+        android:layout_marginTop="55dp"
+        android:padding="@dimen/activity_margin"
+        tools:context=".EditorActivity">
+
+        <!-- Overview category -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- Product Image -->
+            <ImageView
+                android:id="@+id/edit_product_image"
+                style="@style/product_image_style"
+                android:contentDescription="@string/edit_product_image_content_description"
+                android:src="@drawable/ic_upload_img" />
+
+            <!-- Input fields -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:orientation="vertical"
+                android:paddingEnd="@dimen/edit_product_input_padding"
+                android:paddingLeft="@dimen/edit_product_input_padding"
+                android:paddingRight="@dimen/edit_product_input_padding"
+                android:paddingStart="@dimen/edit_product_input_padding">
+
+                <!-- Name field -->
+                <EditText
+                    android:id="@+id/edit_product_name"
+                    style="@style/editor_field_style"
+                    android:hint="@string/hint_product_name"
+                    android:inputType="textCapWords" />
+
+                <!-- Price field -->
+                <EditText
+                    android:id="@+id/edit_product_price"
+                    style="@style/editor_field_style"
+                    android:hint="@string/hint_product_price"
+                    android:inputType="numberDecimal" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Supplier category -->
+        <LinearLayout
+            android:id="@+id/container_supplier"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- Label -->
+            <TextView
+                style="@style/category_style"
+                android:text="@string/category_supplier" />
+
+            <!-- Input field -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:orientation="vertical">
+
+                <!-- Supplier name field -->
+                <EditText
+                    android:id="@+id/edit_supplier_name"
+                    style="@style/editor_field_style"
+                    android:hint="@string/hint_supplier_name"
+                    android:inputType="textCapWords" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Resupply category -->
+        <LinearLayout
+            android:id="@+id/container_resupply"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
+
+            <!-- Label -->
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/category_resupply_text"
+                    style="@style/category_style"
+                    android:layout_width="match_parent"
+                    android:text="@string/category_resupply" />
+
+                <ImageButton
+                    android:id="@+id/edit_product_call_resupply_phone_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/category_resupply_text"
+                    android:contentDescription="@string/call_resupply_phone_button_content_description"
+                    android:src="@drawable/ic_perm_phone_msg_black_18dp" />
+
+                <ImageButton
+                    android:id="@+id/edit_product_open_resupply_url_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/category_resupply_text"
+                    android:layout_toEndOf="@+id/edit_product_call_resupply_phone_button"
+                    android:layout_toRightOf="@+id/edit_product_call_resupply_phone_button"
+                    android:contentDescription="@string/open_resupply_url_button_content_description"
+                    android:src="@drawable/ic_web_black_18dp" />
+
+            </RelativeLayout>
+
+            <!-- Input field -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:orientation="vertical">
+
+
+                <!-- Resupply phone field -->
+                <EditText
+                    android:id="@+id/edit_supplier_phone"
+                    style="@style/editor_field_style"
+                    android:hint="@string/hint_resupply_phone"
+                    android:inputType="phone" />
+
+                <!-- Resupply URL -->
+                <EditText
+                    android:id="@+id/edit_supplier_url"
+                    style="@style/editor_field_style"
+                    android:hint="@string/hint_resupply_url"
+                    android:inputType="textUri" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Quantity category -->
+        <LinearLayout
+            android:id="@+id/container_quantity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <!-- Label -->
+                <TextView
+                    android:id="@+id/category_quantity_text"
+                    style="@style/category_style"
+                    android:layout_width="match_parent"
+                    android:text="@string/category_quantity" />
+
+                <ImageButton
+                    android:id="@+id/edit_product_decrease_quantity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/category_quantity_text"
+                    android:contentDescription="@string/decrease_quantity_button_content_description"
+                    android:src="@drawable/ic_remove_circle_outline_black_18dp" />
+
+                <ImageButton
+                    android:id="@+id/edit_product_increase_quantity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/category_quantity_text"
+                    android:layout_toEndOf="@+id/edit_product_decrease_quantity"
+                    android:layout_toRightOf="@+id/edit_product_decrease_quantity"
+                    android:contentDescription="@string/increase_quantity_button_content_description"
+                    android:src="@drawable/ic_add_circle_outline_black_18dp" />
+            </RelativeLayout>
+
+            <!-- Input fields -->
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:paddingEnd="@dimen/edit_product_input_padding"
+                android:paddingLeft="@dimen/edit_product_input_padding"
+                android:paddingRight="@dimen/edit_product_input_padding"
+                android:paddingStart="@dimen/edit_product_input_padding">
+
+                <!-- Weight field -->
+                <EditText
+                    android:id="@+id/edit_product_quantity_in_stock"
+                    style="@style/editor_field_style"
+                    android:hint="@string/hint_quantity_in_stock"
+                    android:inputType="number" />
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

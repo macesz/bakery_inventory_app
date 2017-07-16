@@ -1,0 +1,89 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+
+
+    <style name="product_image_style">
+        <item name="android:layout_width">@dimen/product_image_width</item>
+        <item name="android:layout_height">@dimen/product_image_height</item>
+        <item name="android:scaleType">centerCrop</item>
+    </style>
+
+    <style name="product_list_item_text_style">
+        <item name="android:layout_marginLeft">@dimen/text_margin_left</item>
+        <item name="android:paddingBottom">@dimen/text_padding_bottom</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">center_vertical|start</item>
+        <item name="android:drawablePadding">@dimen/product_list_item_textview_drawable_padding</item>
+    </style>
+
+    <style name="product_name_text_style" parent="product_list_item_text_style">
+        <item name="android:maxLines">2</item>
+        <item name="android:textSize">@dimen/product_list_item_name_text_size</item>
+    </style>
+
+    <style name="product_price_text_style" parent="product_list_item_text_style">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">@dimen/product_list_item_price_text_dize</item>
+    </style>
+
+    <style name="product_quantity_available_text_style" parent="product_list_item_text_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textSize">@dimen/product_list_item_quantity_available_text_size</item>
+    </style>
+
+    <style name="product_list_item_sales_controls_text_style" parent="product_list_item_text_style">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">@dimen/product_list_item_price_text_dize</item>
+    </style>
+
+
+    <!-- Style for a category in the editor -->
+    <style name="category_style">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:paddingTop">16dp</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textAppearance">?android:textAppearanceSmall</item>
+    </style>
+
+
+    <!-- Style for an EditText field in the editor -->
+    <style name="editor_field_style">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:textAppearance">?android:textAppearanceMedium</item>
+    </style>
+
+    <!-- Style for the measurement units for an EditText field in the editor -->
+    <style name="editor_units_style">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:paddingRight">16dp</item>
+        <item name="android:paddingTop">16dp</item>
+        <item name="android:textAppearance">?android:textAppearanceSmall</item>
+    </style>
+
+</resources>
