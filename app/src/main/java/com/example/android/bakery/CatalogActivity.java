@@ -131,7 +131,7 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
                     Toast.LENGTH_SHORT).show();
         } else if (quantity != newQuantity) {
             // Otherwise, the update was successful and we can display a toast.
-            Toast.makeText(this, getString(R.string.update_product_updated) + id,
+            Toast.makeText(this, getString(R.string.update_product_updated),
                     Toast.LENGTH_SHORT).show();
         }
     }
@@ -141,9 +141,9 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
      */
     private void insertProduct() {
         ContentValues values = new ContentValues();
-        values.put(ProductEntry.COLUMN_PRODUCT_NAME, "Coffee cup");
-        values.put(ProductEntry.COLUMN_PRODUCT_PRICE, "22.99");
-        values.put(ProductEntry.COLUMN_PRODUCT_IN_STOCK, 2);
+        values.put(ProductEntry.COLUMN_PRODUCT_NAME, "Rye Sourdough bread");
+        values.put(ProductEntry.COLUMN_PRODUCT_PRICE, "20");
+        values.put(ProductEntry.COLUMN_PRODUCT_IN_STOCK, 8);
 
         Uri imgUri = Uri.parse("android.resource://" + ProductContract.CONTENT_AUTHORITY + "/" + R.drawable.ic_bread_empty);
         Log.v(LOG_TAG, imgUri.toString());

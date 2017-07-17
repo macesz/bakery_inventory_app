@@ -213,8 +213,11 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         // Read from input fields
         // Use trim to eliminate leading or trailing white space
         String name = nameEditText.getText().toString().trim();
-        String price = priceEditText.getText().toString().trim();
+        String priceString = priceEditText.getText().toString().trim();
         quantityString = quantityEditText.getText().toString().trim();
+        String suplierString = supplierNameEditText.getText().toString().trim();
+        String phoneString = resupplyPhoneEditText.getText().toString().trim();
+        String urlString = resupplyUrlEdittext.getText().toString().trim();
 
         // Check if this is supposed to be a new product
         // and check if all the fields in the editor are blank
@@ -232,13 +235,14 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         int quantity = !TextUtils.isEmpty(quantityString) ? Integer.parseInt(quantityString) : 0;
         values.put(ProductEntry.COLUMN_PRODUCT_IN_STOCK, quantity);
 
-
-        if (TextUtils.isEmpty(price)) {
+        // If the price is not provided by the user, don't try to parse the string into an
+        // integer value. Use 0 by default.
+        if (TextUtils.isEmpty(priceString)) {
             Toast.makeText(this, getString(R.string.editor_required_price), Toast.LENGTH_SHORT).show();
             return false;
         }
 
-        values.put(ProductEntry.COLUMN_PRODUCT_PRICE, price);
+        values.put(ProductEntry.COLUMN_PRODUCT_PRICE, priceString);
 
         if (imageUri == null) {
             Toast.makeText(this, getString(R.string.editor_required_photo), Toast.LENGTH_SHORT).show();
@@ -248,8 +252,12 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         String image = imageUri.toString();
         values.put(ProductEntry.COLUMN_PRODUCT_IMAGE, image);
 
-        // Determine if this is a new or existing product by checking if currentPetUri is null or not
+        values.put(ProductEntry.COLUMN_PRODUCT_SUPPLIER_NAME, suplierString);
+        values.put(ProductEntry.COLUMN_PRODUCT_SUPPLIER_PHONE, phoneString);
+        values.put(ProductEntry.COLUMN_PRODUCT_SUPPLIER_URL, urlString);
 
+
+        // Determine if this is a new or existing product by checking if currentPetUri is null or not
         if (currentProductUri == null) {
             setTitle("Add Product");
             supportInvalidateOptionsMenu();
@@ -483,7 +491,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         intent.setType("text/plain");
         String subject = getString(R.string.editor_ordering_product) + product;
         intent.putExtra(Intent.EXTRA_SUBJECT, subject);
-        String messageBody = getString(R.string.editor_message_body) + product;
+        String messageBody = getString(R.string.editor_message_body) + product + " ?";
         intent.putExtra(Intent.EXTRA_TEXT, messageBody);
 
         startActivity(Intent.createChooser(intent, "Send Email"));

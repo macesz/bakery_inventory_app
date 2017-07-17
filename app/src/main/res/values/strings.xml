@@ -113,5 +113,5 @@
     <!-- Label for overflow menu option that inserts fake pet data into the app [CHAR LIMIT=20] -->
     <string name="action_insert_dummy_data">Insert Dummy Data</string>
     <string name="editor_ordering_product">Ordering product: </string>
-    <string name="editor_message_body">Hello, can you send me product: </string>
+    <string name="editor_message_body">Hello, can you send me: </string>
 </resources>
