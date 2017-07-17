@@ -14,7 +14,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.NavUtils;
 import android.support.v4.content.ContextCompat;
@@ -207,20 +206,32 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         openResupplyUrlButton.setOnClickListener(onClickListener);
     }
 
+    /**
+     * Get user input from editor and save product into database.
+     */
     private boolean saveProduct() {
+        // Read from input fields
+        // Use trim to eliminate leading or trailing white space
         String name = nameEditText.getText().toString().trim();
         String price = priceEditText.getText().toString().trim();
         quantityString = quantityEditText.getText().toString().trim();
 
+        // Check if this is supposed to be a new product
+        // and check if all the fields in the editor are blank
         if (TextUtils.isEmpty(name)) {
             Toast.makeText(this, getString(R.string.editor_required_name), Toast.LENGTH_SHORT).show();
             return false;
         }
+        // Create a ContentValues object where column names are the keys,
+        // and product attributes from the editor are the values.
         ContentValues values = new ContentValues();
         values.put(ProductEntry.COLUMN_PRODUCT_NAME, name);
 
+        // If the quantity is not provided by the user, don't try to parse the string into an
+        // integer value. Use 0 by default.
         int quantity = !TextUtils.isEmpty(quantityString) ? Integer.parseInt(quantityString) : 0;
         values.put(ProductEntry.COLUMN_PRODUCT_IN_STOCK, quantity);
+
 
         if (TextUtils.isEmpty(price)) {
             Toast.makeText(this, getString(R.string.editor_required_price), Toast.LENGTH_SHORT).show();
@@ -237,9 +248,14 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         String image = imageUri.toString();
         values.put(ProductEntry.COLUMN_PRODUCT_IMAGE, image);
 
+        // Determine if this is a new or existing product by checking if currentPetUri is null or not
+
         if (currentProductUri == null) {
             setTitle("Add Product");
             supportInvalidateOptionsMenu();
+
+            // This is a NEW product, so insert a new pet into the provider,
+            // returning the content URI for the new pet.
             Uri newUri = getContentResolver().insert(ProductEntry.CONTENT_URI_PRODUCTS, values);
 
             // Show a toast message depending on whether or not the insertion was successful
@@ -336,8 +352,12 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * This method is called when the back button is pressed.
+     */
     @Override
     public void onBackPressed() {
+        // If the product hasn't changed, continue with handling back button press
         if (!productHasChanged) {
             super.onBackPressed();
             return;
@@ -357,6 +377,13 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         showUnsavedChangesDialog(discardButtonClickListener);
     }
 
+    /**
+     * Show a dialog that warns the user there are unsaved changes that will be lost
+     * if they continue leaving the editor.
+     *
+     * @param discardButtonClickListener is the click listener for what to do when
+     *                                   the user confirms they want to discard their changes
+     */
     private void showUnsavedChangesDialog(
             DialogInterface.OnClickListener discardButtonClickListener) {
         // Create an AlertDialog.Builder and set the message, and click listeners
@@ -397,7 +424,10 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         Log.v("CatalogActivity", rowsDeleted + " rows deleted from product database");
     }
 
-
+    /**
+     *Show a dialog that ask the user about to delet this product
+     *
+     */
     private void showDeleteConfirmationDialog() {
         // Create an AlertDialog.Builder and set the message, and click listeners
         // for the positive and negative buttons on the dialog.
@@ -423,7 +453,9 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }
-
+    /**
+     * Perform the deletion of the pet in the database.
+     */
     private void deleteProduct() {
         if (currentProductUri != null) {
             // Call the ContentResolver to delete the product at the given content URI.

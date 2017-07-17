@@ -136,6 +136,9 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
         }
     }
 
+    /**
+     * Helper method to insert hardcoded product data into the database. For debugging purposes only.
+     */
     private void insertProduct() {
         ContentValues values = new ContentValues();
         values.put(ProductEntry.COLUMN_PRODUCT_NAME, "Coffee cup");
@@ -156,6 +159,10 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
         Log.v("CatalogActivity", rowsDeleted + " rows deleted from products database");
     }
 
+    /**
+     * Show a dialog that ask the user about to delet this product
+     *
+     */
     private void showDeleteConfirmationDialog() {
         // Create an AlertDialog.Builder and set the message, and click listeners
         // for the positive and negative buttons on the dialog.
