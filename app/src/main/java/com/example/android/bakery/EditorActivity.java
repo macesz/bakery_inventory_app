@@ -97,6 +97,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
     private EditText resupplyUrlEdittext;
 
     String quantityString;
+    String priceString;
 
     private boolean productHasChanged = false;
 
@@ -213,9 +214,9 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         // Read from input fields
         // Use trim to eliminate leading or trailing white space
         String name = nameEditText.getText().toString().trim();
-        String priceString = priceEditText.getText().toString().trim();
+        priceString = priceEditText.getText().toString().trim();
         quantityString = quantityEditText.getText().toString().trim();
-        String suplierString = supplierNameEditText.getText().toString().trim();
+        String supplierString = supplierNameEditText.getText().toString().trim();
         String phoneString = resupplyPhoneEditText.getText().toString().trim();
         String urlString = resupplyUrlEdittext.getText().toString().trim();
 
@@ -232,27 +233,32 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
 
         // If the quantity is not provided by the user, don't try to parse the string into an
         // integer value. Use 0 by default.
-        int quantity = !TextUtils.isEmpty(quantityString) ? Integer.parseInt(quantityString) : 0;
-        values.put(ProductEntry.COLUMN_PRODUCT_IN_STOCK, quantity);
+        int in_stock;
+        if (TextUtils.isEmpty(quantityString)) {
+            Toast.makeText(this, getString(R.string.editor_required_quantity), Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        in_stock = Integer.parseInt(quantityString);
+        values.put(ProductEntry.COLUMN_PRODUCT_IN_STOCK, in_stock);
 
         // If the price is not provided by the user, don't try to parse the string into an
         // integer value. Use 0 by default.
+        int price;
         if (TextUtils.isEmpty(priceString)) {
             Toast.makeText(this, getString(R.string.editor_required_price), Toast.LENGTH_SHORT).show();
             return false;
         }
+        price = Integer.parseInt(priceString);
+        values.put(ProductEntry.COLUMN_PRODUCT_PRICE, price);
 
-        values.put(ProductEntry.COLUMN_PRODUCT_PRICE, priceString);
-
-        if (imageUri == null) {
-            Toast.makeText(this, getString(R.string.editor_required_photo), Toast.LENGTH_SHORT).show();
-            return false;
+        String image = null;
+        if (imageUri != null) {
+            image = imageUri.toString();
         }
 
-        String image = imageUri.toString();
         values.put(ProductEntry.COLUMN_PRODUCT_IMAGE, image);
 
-        values.put(ProductEntry.COLUMN_PRODUCT_SUPPLIER_NAME, suplierString);
+        values.put(ProductEntry.COLUMN_PRODUCT_SUPPLIER_NAME, supplierString);
         values.put(ProductEntry.COLUMN_PRODUCT_SUPPLIER_PHONE, phoneString);
         values.put(ProductEntry.COLUMN_PRODUCT_SUPPLIER_URL, urlString);
 
@@ -314,10 +320,11 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
             // Respond to a click on the "Save" menu option
             case R.id.action_save:
                 // Save product to database
-                saveProduct();
-                // Exit activity
-                finish();
-                return true;
+                if(saveProduct()) {
+                    // Exit activity
+                    finish();
+                    return true;
+                }
             case R.id.action_delete_all_entries:
                 deleteAllProducts();
                 return true;
@@ -569,10 +576,12 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
      * method to decrease product quantity by one.
      */
     private void decreaseProductQuantity() {
-        int quantity = Integer.parseInt(quantityEditText.getText().toString().trim());
-        if (quantity > 0) {
-            productHasChanged = true;
-            quantityEditText.setText(String.valueOf(quantity - 1));
+        if(!TextUtils.isEmpty(quantityEditText.getText())) {
+            int quantity = Integer.parseInt(quantityEditText.getText().toString().trim());
+            if (quantity > 0) {
+                productHasChanged = true;
+                quantityEditText.setText(String.valueOf(quantity - 1));
+            }
         }
     }
 
@@ -580,9 +589,15 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
      * method to increase product quantity by one.
      */
     private void increaseProductQuantity() {
-        productHasChanged = true;
-        int quantity = Integer.parseInt(quantityEditText.getText().toString().trim());
-        quantityEditText.setText(String.valueOf(quantity + 1));
+        if(!TextUtils.isEmpty(quantityEditText.getText())) {
+            productHasChanged = true;
+            int quantity = Integer.parseInt(quantityEditText.getText().toString().trim());
+            quantityEditText.setText(String.valueOf(quantity + 1));
+        }
+        else {
+            productHasChanged = true;
+            quantityEditText.setText("1");
+        }
     }
 
     /**

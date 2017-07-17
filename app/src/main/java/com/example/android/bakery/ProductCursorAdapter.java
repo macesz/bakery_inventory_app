@@ -80,7 +80,9 @@ public class ProductCursorAdapter extends CursorAdapter {
 
         nameTextView.setText(name + Long.toString(id));
         quantityTextView.setText(String.valueOf(quantity));
-        productImageView.setImageURI(Uri.parse(image));
+        if(image!=null) {
+            productImageView.setImageURI(Uri.parse(image));
+        }
         priceTextView.setText(price + " EUR");
 
         sellButton.setOnClickListener(new View.OnClickListener() {
