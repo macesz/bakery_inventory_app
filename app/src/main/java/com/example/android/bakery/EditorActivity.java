@@ -101,16 +101,6 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
 
     private boolean productHasChanged = false;
 
-    private View.OnTouchListener touchListener = new View.OnTouchListener() {
-        @Override
-        public boolean onTouch(View view, MotionEvent motionEvent) {
-            productHasChanged = true;
-            return false;
-        }
-    };
-
-    private static final int MAX_PRODUCT_QUANTITY = 999999;
-    private static final int MIN_PRODUCT_QUANTITY = 0;
 
     private View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
@@ -226,10 +216,26 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
             Toast.makeText(this, getString(R.string.editor_required_name), Toast.LENGTH_SHORT).show();
             return false;
         }
+        if (TextUtils.isEmpty(supplierString)) {
+            Toast.makeText(this, getString(R.string.editor_required_supplier), Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (TextUtils.isEmpty(phoneString)) {
+            Toast.makeText(this, getString(R.string.editor_required_phone), Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (TextUtils.isEmpty(urlString)) {
+            Toast.makeText(this, getString(R.string.editor_required_url), Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
         // Create a ContentValues object where column names are the keys,
         // and product attributes from the editor are the values.
         ContentValues values = new ContentValues();
         values.put(ProductEntry.COLUMN_PRODUCT_NAME, name);
+        values.put(ProductEntry.COLUMN_PRODUCT_SUPPLIER_NAME, supplierString);
+        values.put(ProductEntry.COLUMN_PRODUCT_SUPPLIER_PHONE, phoneString);
+        values.put(ProductEntry.COLUMN_PRODUCT_SUPPLIER_URL, urlString);
 
         // If the quantity is not provided by the user, don't try to parse the string into an
         // integer value. Use 0 by default.
@@ -251,16 +257,13 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         price = Integer.parseInt(priceString);
         values.put(ProductEntry.COLUMN_PRODUCT_PRICE, price);
 
-        String image = null;
-        if (imageUri != null) {
-            image = imageUri.toString();
+        if (imageUri == null) {
+            Toast.makeText(this, getString(R.string.editor_required_photo), Toast.LENGTH_SHORT).show();
+            return false;
         }
-
+        String image = imageUri.toString();
         values.put(ProductEntry.COLUMN_PRODUCT_IMAGE, image);
 
-        values.put(ProductEntry.COLUMN_PRODUCT_SUPPLIER_NAME, supplierString);
-        values.put(ProductEntry.COLUMN_PRODUCT_SUPPLIER_PHONE, phoneString);
-        values.put(ProductEntry.COLUMN_PRODUCT_SUPPLIER_URL, urlString);
 
 
         // Determine if this is a new or existing product by checking if currentPetUri is null or not

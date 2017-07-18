@@ -63,6 +63,7 @@
                 <EditText
                     android:id="@+id/edit_product_price"
                     style="@style/editor_field_style"
+                    android:maxLength="5"
                     android:hint="@string/hint_product_price"
                     android:inputType="numberDecimal" />
             </LinearLayout>
@@ -214,6 +215,7 @@
                     android:id="@+id/edit_product_quantity_in_stock"
                     style="@style/editor_field_style"
                     android:hint="@string/hint_quantity_in_stock"
+                    android:maxLength="5"
                     android:inputType="number" />
             </RelativeLayout>
         </LinearLayout>

@@ -102,6 +102,13 @@
     <string name="editor_required_price">Price is required</string>
     <string name="editor_required_photo">Photo is required</string>
     <string name="editor_required_quantity">Quantity is required</string>
+    <string name="editor_required_supplier">Supplier name is required</string>
+    <string name="editor_required_phone">Phone is required</string>
+    <string name="editor_required_url">URL is required</string>
+    <string name="select_picture">Select picture</string>
+
+
+
 
 
     <string name="product_validator_message_invalid_id">ID must be a non-negative integer</string>
